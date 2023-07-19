@@ -1,0 +1,30 @@
+<div class='container mt-5'>
+    <div class="container text-center">
+        <h2>Search result for "<%= @search %>":</h2>
+    </div>
+    <% if @cars != nil %>
+        <div class='row'>
+            <% @cars.each do |c| %>
+                <div class="col-md-6 col-lg-4 col-sm-12">
+                    <div class="card mt-3 col w-100" style="width:30rem; height:auto">
+                        <%= image_tag c.image, class:'p-3' %>
+                        <div class='card-body'>
+                            <div>
+                                <p class="card-text fs-3"><%= c.model.capitalize %></p>
+                            </div>
+                            <div class=" mt-3">
+                                <p>Mileage: <%= c.mileage %> km</p>
+                                <p>Year: <%= c.year %></p>
+                                <p>Location: <%= c.location%></p>
+                                <p>Price: <%= c.price %>$ per day</p>
+                            </div>
+                            <%= button_to  "More Info",car_profile_path(c), class:'btn btn-primary', method: :get %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    <% else %>
+        <h3 class="text-danger mt-5">No match item was found !<h3>
+    <% end %> 
+</div>

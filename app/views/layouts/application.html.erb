@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HoomoRentalCar</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand text-primary fs-2" href=<%= root_path %>>Hoomo Rental Car</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <a class="m-2 text-decoration-none fs-4" href=<%= account_path(current_user.id) %>><%= "Hi #{current_user.full_name.truncate(15)}"%></a>
+          </li>
+          <li class="nav-item">
+            <%= button_to "Sign Out", session_path, class:"btn btn-outline-danger", method: :delete %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href=<%= new_car_profile_path %>>Rent Your Car</a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link active" href=<%= session_new_path %>>Sign In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href=<%= new_user_path %>>New User?</a>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <a class="nav-link active" href=<%= welcome_index_path %>>Rent Cars List</a>
+        </li>
+      </ul>
+      <%= form_tag search_index_path ,class:'d-flex' do %>
+        <div class='form-check'>
+          <%= radio_button_tag :search_method, 'location', class:'form-check-input' %>
+          <%= label_tag :search_method, 'Location', class:'form-check-label' %>
+          <%= radio_button_tag :search_method, 'model', class:'form-check-input' %>
+          <%= label_tag :search_method, 'Model', class:'form-check-label' %>
+        </div>
+        <%= text_field_tag :search, nil, class:"form-control me-2" ,placeholder:"Search"%>
+        <%= submit_tag "Submit", class:"btn btn-outline-success"%>
+      <% end %>
+    </div>
+  </div>
+</nav>
+<div class='container d-flex justify-content-center mt-3 '>
+      <% flash.each do |key , value| %>
+        <div class="alert alert-<%=key%> alert-dismissble fade show w-30">
+          <%= value %>
+          <button type='button' class='btn-close' data-bs-dismiss='alert' ></button>
+        </div>
+      <% end %>
+    </div>
+    <%= yield %>
+  </body>
+</html>

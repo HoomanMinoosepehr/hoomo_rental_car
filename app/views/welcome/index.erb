@@ -1,0 +1,32 @@
+<div class='container mt-5'>
+    <div class="text-center">
+    <h2>List of available cars:</h2>
+    </div>
+    <div class='row'>
+        <% @car.each do |c| %>
+        <div class="col-md-6 col-lg-4 col-sm-12">
+            <div class="card mt-3 col w-100" style="width:30rem; height:37rem">
+                <% if c.image.present? %>
+                    <%= image_tag c.image,alt: 'No Image', class:'p-3' %>
+                <% else %>
+                    <%= image_tag "no_image.jpg", style:'width:17rem' %>
+                <% end %>
+                <div class='card-body'>
+                    <div>
+                        <p class="card-text fs-3"><%= c.model.capitalize %></p>
+                    </div>
+                    <div class=" mt-3">
+                        <p>Mileage: <%= c.mileage %> km</p>
+                        <p>Year: <%= c.year %></p>
+                        <p>Price: <%= c.price %>$ per day</p>
+                        <p>Location: <%= c.location %></p>
+                    </div>
+                    <div>
+                        <%= button_to  "More Info", car_profile_path(c), class:'btn btn-primary', method: :get %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class='container' style='width:40rem'>
+    <h2 class='mt-3'>Favorited Items:</h2>
+    <% if @cars.present? %>
+        <% @cars.each do |p| %>
+                <div class='card w-70 mt-3' style='width:40rem'>
+                    <% if p.image.present? %>
+                        <%= image_tag p.image,alt: 'No Image', class:'p-3' %>
+                    <% else %>
+                        <%= image_tag "no_image.jpg", style:'width:17rem' %>
+                    <% end %>
+                    <div class="card-body">
+                        <p class="card-text">Descriptions: <%= p.content %></p>
+                        <p class="card-text">Model: <%= p.model.capitalize %></p>
+                        <p class="card-text">Year: <%= p.year %></p>
+                        <p class="card-text">Mileage: <%= p.mileage %> km</p>
+                        <p class="card-text">Location: <%= p.location %></p>
+                        <p class="card-text">Price: <%= p.price %>$ per day</p>
+                        <div class='d-flex justify-content-end'>
+                            <%= button_to "View Car", car_profile_path(p), method: :get, class:"btn btn-info" %>
+                        </div>
+                    </div>
+                </div>
+        <% end %>
+    <% else %>
+        <div class='text-center mt-5 text-danger'>
+            <h3>List is Empty!</h3>
+        </div>
+    <% end %>
+</div>

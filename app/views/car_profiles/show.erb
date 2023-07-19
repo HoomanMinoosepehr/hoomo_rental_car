@@ -1,0 +1,69 @@
+<div class="container" style='width:60rem'>
+    <div class="container d-flex justify-content-center">
+        <div class='card w-70 mt-3' style='width:60rem'>
+                <% if @car.image.present? %>
+                    <%= image_tag @car.image,alt: 'No Image', class:'p-3' %>
+                <% else %>
+                    <%= image_tag "no_image.jpg", style:'width:17rem' %>
+                <% end %>
+            <div class="card-body">
+                <p class="card-text">Descriptions: <%= @car.content %></p>
+                <p class="card-text">Model: <%= @car.model.capitalize %></p>
+                <p class="card-text">Year: <%= @car.year %></p>
+                <p class="card-text">Mileage: <%= @car.mileage %> km</p>
+                <p class="card-text">Price: <%= @car.price %>$ per day</p>
+                <p class="card-text">Location: <%= @car.location %></p>
+                <p class="card-text">Owner's contact info: <%= @car.user.email %></p>
+                <p class="card-text">This add has created by <%= @car.user.full_name.capitalize %>, <%= time_ago_in_words(@car.created_at) %> ago.</p>
+                <% if user_signed_in? %>
+                    <div class='d-flex justify-content-end'>
+                        <% if (favorite = user_favorited_car(@car)) %>
+                            <%= button_to "Remove from Favorites", car_profile_favorite_path(@car, favorite), class:'btn btn-warning', method: :delete %>
+                        <% else %>
+                            <%= button_to "Add to Favorites", car_profile_favorites_path(@car), class:'btn btn-info' %>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <h2 class='mt-5 text-primary'>Comments:</h2>
+    <div class='p-3'>
+        <% if @car.comments == [] %>
+            <p>There is no comment for this add.</p>
+        <% else %>
+        <ul class='list-group list-group'>
+            <% @car.comments.each do |c| %>
+                <li class="list-group-item">
+                    <p class='fs-4'><%= c.content %></p>
+                    <div class='d-flex align-items-center'>
+                    <small><%= "This comment has created by #{c.user.full_name.truncate(10)} #{time_ago_in_words(c.created_at)} ago."%></small>
+                    <% if can?(:destroy,c) %>
+                        <small><%= button_to "Delete Comment", car_profile_comment_path(@car,c), class:"btn text-decoration-none text-danger", method: :delete %></small>
+                    <% end %>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1">
+                        <p class="m-2">Likes: <%= c.likers.count %></p>
+                        <% if user_signed_in? %>
+                            <% if (like = user_liked_comment(c)) %>
+                                <% if can? :destroy,like %>
+                                    <%= button_to "Unlike", car_profile_comment_like_path(@car, c, like), method: :delete, class:"btn btn-danger"%>
+                                <% end %>
+                            <% else %>
+                                    <%= button_to "Like", car_profile_comment_likes_path(@car, c), method: :post, class:'btn btn-success' %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </li>
+            <% end %>
+        <ul>
+        <% end %>
+    </div>
+    <div class=' w-50 mb-5 p-3'>
+        <%= form_for [@car, @comment] do %>
+            <%= label_tag :content, "Leave Your Comment:", class:'form-label' %>
+            <%= text_area_tag :content, nil, class:'form-control' %>
+            <%= submit_tag "Submit Comment", class:'btn btn-success mt-3' %>
+        <% end %>
+    </div>
+</div>
