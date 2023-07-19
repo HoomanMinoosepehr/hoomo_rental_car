@@ -13,7 +13,8 @@ User.create(
     last_name: 'minoo',
     email: 'hooman@minoo.com',
     password: '1H234567',
-    password_confirmation: '1H234567'
+    password_confirmation: '1H234567',
+    admin: true
 )
 
 user = User.find_by(email: 'hooman@minoo.com')
@@ -25,7 +26,7 @@ car_profile = CarProfile.new(
     price: '25',
     user: user,
     content: 'Runs perfect',
-    location: 'Burnaby',
+    location: 'Burnaby'
 )
 
 image_path_civic = Rails.root.join('image','2005-Honda-Civic.jpg')

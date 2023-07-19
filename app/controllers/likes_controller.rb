@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
 
     before_action :authenticate_user!
+    before_action :email_confirmed!
 
     def create
         @car = CarProfile.find params[:car_profile_id]

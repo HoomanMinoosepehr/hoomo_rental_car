@@ -48,6 +48,8 @@ gem 'jquery-rails'
 
 gem 'cancancan', '~> 3.5'
 
+gem 'securerandom', '~> 0.1.0'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -57,6 +59,8 @@ gem 'cancancan', '~> 3.5'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  gem 'letter_opener', '~> 1.4'
 end
 
 group :development do
@@ -69,4 +73,3 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-

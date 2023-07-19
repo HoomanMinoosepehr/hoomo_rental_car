@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def email_confirmed!
+        unless current_user.confirmed_email
+            redirect_to send_path
+        end
+    end
+
     rescue_from CanCan::AccessDenied do |exception|
         flash[:danger] = "Access Denied!"
         redirect_to root_path
@@ -34,5 +40,7 @@ class ApplicationController < ActionController::Base
         current_user.favorites.find_by(car_profile_id: car.id)
     end
     helper_method :user_favorited_car
+
+    
     
 end

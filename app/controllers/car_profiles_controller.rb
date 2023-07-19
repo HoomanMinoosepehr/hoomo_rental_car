@@ -1,6 +1,7 @@
 class CarProfilesController < ApplicationController
 
     before_action :authenticate_user! , except: [:show]
+    before_action :email_confirmed!, except: [:show]
 
     def new
         @car = CarProfile.new

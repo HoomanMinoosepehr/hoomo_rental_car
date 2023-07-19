@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   root "welcome#welcome"
 
-  resources :users
+  resources :users, except: [:show]
+  get "users/confirming" => 'users#confirming', as: 'send'
+  get 'users/email_confirm' => 'users#confirm'
+  post "users/email_confirm" => 'users#email_confirm'
+  get 'users/reconfirm' => 'users#reconfirm'
   
   resources :search, only: [:create]
   

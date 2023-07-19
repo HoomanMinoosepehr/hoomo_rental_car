@@ -1,0 +1,12 @@
+<div class='container mt-4' style='width:45rem'>
+    <h2>Email Confirmation:</h2>
+    <p>In this section, we have sent an email to "<%= current_user.email %>" email address, for finalizing your account creation, you need to enter the CONFIRMATION code in the below form:</p>
+    <%= form_tag users_email_confirm_path do %>
+        <div>
+            <%= label_tag :confirm, "Code:", class:'form-label' %>
+            <%= text_field_tag :confirm, nil, class:'form-control', required: true %>
+        </div>
+        <%= submit_tag "Submit", class:'btn btn-primary mt-3' %>
+    <% end %>
+    <h4 class="mt-5">You havn't received any code in your email address, click <%= link_to "here", users_email_confirm_path %> to resent the code.</h4>
+</div>

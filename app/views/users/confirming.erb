@@ -1,0 +1,6 @@
+<div class='container mt-4' style='width:45rem'>
+    <h2>Dear <%= current_user.full_name %></h2>
+    <p>For access to all the features of Hoomo, you need to confirm your eamil address first.</p>
+    <p>By clicking on below link, we will send you an email with a code, and by inserting this code in the new window, your email adress will be confirmed.</p>
+    <%= link_to 'Click here to confirm your email adress', users_email_confirm_path %>
+</div>

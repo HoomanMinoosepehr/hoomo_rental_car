@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
     before_action :authenticate_user!
+    before_action :email_confirmed!
 
     def create
         @car = CarProfile.find_by_id params[:car_profile_id]
