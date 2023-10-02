@@ -1,9 +1,9 @@
-Hoomo Rental Car
+#Hoomo Rental Car
 Version: v1.0.0
 Framework: Ruby on Rail
 Database: PSQL
 
-Introduction:
+##Introduction:
 “Hoomo” is a website that lets you find a car to rent or as a car owner, you can add your car and list it for rent.
 To find the cars, you can see the listed cars all over the Vancouver of any type or you can search the cars based on their location or specific model, see their information, see their reviews, and choose the one which fits your requirements.
 To add a car to the listing as an owner, you will make a car profile for your car and add its info and its picture, and done! Your advertisement is ready to add to the list of items and everyone can see it.
