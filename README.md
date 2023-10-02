@@ -1,14 +1,13 @@
 # Hoomo Rental Car
 ## Version: v1.0.0
 ## Framework:
-  - BackEnd: Ruby on Rails
-  - FrontEnd: Reac.js
+  - BackEnd: Ruby on Rails & Bootstrap
 
 ## Database: 
  - PostgreSQL
 
 ## Introduction:
-"Hoomo-Rental-Car" is a platform that allows users to either rent a car or list their own cars for rent if they own one. This platform has been developed using Ruby on Rails for the backend and communicates with React.js on the frontend via API. It utilizes PostgreSQL as its database system.
+"Hoomo-Rental-Car" is a platform that allows users to either rent a car or list their own cars for rent if they own one. This platform has been developed using Ruby on Rails for both the server and view pages. It utilizes PostgreSQL as its database system.
 
 ## Users:
 ### Guest User: 
