@@ -1,7 +1,8 @@
 # Hoomo Rental Car
 ## Version: v1.0.0
 ## Framework:
-  - BackEnd: Ruby on Rails & Bootstrap
+  - Ruby on Rails
+  - Bootstrap
 
 ## Database: 
  - PostgreSQL
