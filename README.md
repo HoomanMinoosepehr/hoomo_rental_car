@@ -1,10 +1,14 @@
 # Hoomo Rental Car
 ## Version: v1.0.0
 ## Framework:
+```
   - BackEnd: Ruby on Rails
   - FrontEnd: Reac.js
+```
 ## Database: 
+```
  - PostgreSQL
+```
 
 ## Introduction:
 "Hoomo-Rental-Car" is a platform that allows users to either rent a car or list their own cars for rent if they own one. This platform has been developed using Ruby on Rails for the backend and communicates with React.js on the frontend via API. It utilizes PostgreSQL as its database system.
@@ -14,11 +18,11 @@
 A guest user can view the list of cars and access the individual car's show page, along with its comments and the number of likes for each comment.
 
 ### Signed-in User:
-A signed-in user can also view the list of cars and access the show page for each car, including its comments and the number of likes for each comment. Additionally, signed-in users have the privilege to:
+A signed-in user can view the list of cars and access the show page for each car, including its comments and the number of likes for each comment. Additionally, signed-in users have the privilege to:
 
  - Add comments to cars.
  - Like existing comments.
- - Create a car profile to rent out their own car. To do this, they can navigate to the 'Rent Your Car' section, where they can provide car information, upload pictures, specify their location, and have the car added    to the list.
+ - Create a car profile to rent out their own car. To do this, they can navigate to the 'Rent Your Car' section, where they can provide car information, upload pictures, specify their location, an have the car added to the list.
 
 Signed-in users can also:
 
