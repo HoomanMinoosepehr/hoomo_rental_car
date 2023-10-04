@@ -6,6 +6,7 @@ class FavoritesController < ApplicationController
         @cars = current_user.favorated_cars 
     end
 
+    # add the car profile to the favorite list, which belong to user table and car profile table
     def create
         @car = CarProfile.find params[:car_profile_id]
         @favorite = Favorite.new(car_profile: @car, user: current_user)

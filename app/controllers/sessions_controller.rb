@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 
     end
 
+    # user login
     def create
         @user = User.find_by_email params[:email]
         if @user && @user.authenticate(params[:password])
@@ -16,6 +17,7 @@ class SessionsController < ApplicationController
         end
     end
 
+    # user logout
     def destroy
         session[:user_id] = nil
         flash[:warning] = "You've Signed out successfully."

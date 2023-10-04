@@ -11,10 +11,13 @@ class UsersController < ApplicationController
     end
 
     def confirm
+        # generating a random code
         @confirm_code = SecureRandom.hex(3)
         @user = current_user
+        # saving the code in the database
         @user.confirmed_email_code = @confirm_code
         if @user.save(validate:false)
+            # sending the email regarding the confirmation code
             CreateAccountMailer.email_confirmation(@user, @confirm_code).deliver_now
         else
             flash[:danger] = 'Something wnet wrong, Please try again.'
@@ -22,13 +25,16 @@ class UsersController < ApplicationController
         end
     end
 
+    # the page where the user ask to resent the confirmation code to their email
     def reconfirm
 
     end
 
+    # confirming the email address process
     def email_confirm
         @user = current_user
         if @user.confirmed_email_code == params[:confirm]
+            # updating the confirmed email status
             @user.confirmed_email = true
             if @user.save(validate: false)
                 flash[:success] = "Your email address has been confirmed successfully!"
@@ -43,10 +49,13 @@ class UsersController < ApplicationController
         end
     end
 
+    # creating new user account
     def create
         @user = User.new user_params
+        # set the confirmed email status to false by default
         @user.confirmed_email = false
         if @user.save
+            # sending an email to the user to aske them to confirm their email address
             CreateAccountMailer.notify_new_user(@user).deliver_now
             flash[:success] = "Your Accout has been created successfully!"
             redirect_to session_new_path
@@ -58,6 +67,7 @@ class UsersController < ApplicationController
         authorize! :edit, @user
     end
 
+    # updating user account
     def update
         @user = User.find params[:id]
         new_email = params[:user][:email]
@@ -78,6 +88,7 @@ class UsersController < ApplicationController
         end
     end
 
+    # deleting user account
     def destroy
         @user = User.find params[:id]
         authorize! :destroy, @user

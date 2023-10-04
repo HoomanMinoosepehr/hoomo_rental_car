@@ -13,6 +13,7 @@ class LikesController < ApplicationController
 
     def destroy
         @like = Like.find params[:id]
+        # checking if the user is authorized to delete the like
         authorize! :destroy, @like
         @like.destroy
         redirect_to  car_profile_path params[:car_profile_id]

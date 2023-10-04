@@ -18,6 +18,7 @@ class CommentsController < ApplicationController
 
     def destroy
         @comment = Comment.find params[:id]
+        # checking if the user is authorized to delete the comment
         authorize! :destroy, @comment
         @car = CarProfile.find params[:car_profile_id]
         @comment.destroy
