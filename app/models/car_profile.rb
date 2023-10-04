@@ -6,6 +6,7 @@ class CarProfile < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favoraters, through: :favorites, source: :user
 
+  # attaching images to car profiles
   has_one_attached :image
 
   validates :location, presence: true

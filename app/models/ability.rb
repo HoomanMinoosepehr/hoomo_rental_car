@@ -37,6 +37,7 @@ class Ability
       can :read, :all
     end
 
+    # specifying that which user can do what
     can :destroy, Comment, user_id: user.id
     can :destroy, Like, user_id: user.id
     can [:edit, :update, :destroy], CarProfile, user_id: user.id
