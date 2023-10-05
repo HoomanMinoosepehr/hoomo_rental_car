@@ -76,7 +76,9 @@ class UsersController < ApplicationController
         @user.first_name = params[:user][:first_name]
         @user.last_name = params[:user][:last_name]
         @user.email = params[:user][:email]
+        # cheking if the user has changed their email address
         if new_email != old_email
+            # if the user has changed their email address, set the confirmed email status to false and they need to confirm the new email address
             @user.confirmed_email = false
         end
         if @user.save(validate: false)
