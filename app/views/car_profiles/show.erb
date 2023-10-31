@@ -14,7 +14,7 @@
                 <p class="card-text">Price: <%= @car.price %>$ per day</p>
                 <p class="card-text">Location: <%= @car.location %></p>
                 <p class="card-text">Owner's contact info: <%= @car.user.email %></p>
-                <p class="card-text">This add has created by <%= @car.user.full_name.capitalize %>, <%= time_ago_in_words(@car.created_at) %> ago.</p>
+                <p class="card-text">This advertise has created by <%= @car.user.full_name.capitalize %>, <%= time_ago_in_words(@car.created_at) %> ago.</p>
                 <% if user_signed_in? %>
                     <div class='d-flex justify-content-end'>
                         <% if (favorite = user_favorited_car(@car)) %>
