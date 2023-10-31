@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    skip_before_action :verify_authenticity_token
 
     # checking if the user is logged in
     def authenticate_user!

@@ -23,6 +23,7 @@ module HoomoRentalCar
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -33,5 +34,16 @@ module HoomoRentalCar
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+          origins 'http://127.0.0.1:5050'
+          resource '/api/v1/*',
+          headers: :any,
+          methods: [:get, :post, :patch, :put],
+          credentials: true
+      end
+    end
+
   end
 end

@@ -50,6 +50,8 @@ gem 'cancancan', '~> 3.5'
 
 gem 'securerandom', '~> 0.1.0'
 
+gem 'rack-cors'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
