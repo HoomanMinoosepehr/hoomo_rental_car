@@ -40,7 +40,7 @@ module HoomoRentalCar
           origins 'http://127.0.0.1:5050'
           resource '/api/v1/*',
           headers: :any,
-          methods: [:get, :post, :patch, :put],
+          methods: [:get, :post, :patch, :put, :delete],
           credentials: true
       end
     end
