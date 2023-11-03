@@ -7,7 +7,9 @@ class CarProfile < ApplicationRecord
   has_many :favoraters, through: :favorites, source: :user
 
   # attaching images to car profiles
-  has_one_attached :image
+  has_many_attached :image
 
   validates :location, presence: true
+  validates :model, length: { minimum: 8 }
+  validates :price, presence: true
 end

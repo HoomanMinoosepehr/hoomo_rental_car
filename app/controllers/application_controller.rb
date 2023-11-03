@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     skip_before_action :verify_authenticity_token
 
-    # checking if the user is logged in
+    # checking wether the user is logged in
     def authenticate_user!
         unless user_signed_in?
             flash[:danger] = "You need to sign in first!"
@@ -20,6 +20,13 @@ class ApplicationController < ActionController::Base
     rescue_from CanCan::AccessDenied do |exception|
         flash[:danger] = "Access Denied!"
         redirect_to root_path
+    end
+
+    # checking wether the user is logged in or not
+    def authenticate_user_api!
+        unless user_signed_in?
+            render json: { message: "You need to sign in first!", status:403 }
+        end
     end
 
 
