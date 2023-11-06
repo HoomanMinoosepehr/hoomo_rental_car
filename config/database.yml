@@ -23,13 +23,18 @@ default: &default
 
 development:
   <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: hoomo_rental_car_development
+  username: hooman
+  password: 7966458
+  host: 127.0.0.1
+  port: 5432
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: hoomo_rental_car
 
   # The password associated with the postgres role (username).
   #password:
