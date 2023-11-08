@@ -10,6 +10,8 @@ RUN bundle install
 
 COPY . .
 
+RUN chmod +x /app/entrypoint.sh
+
 EXPOSE 3030
 
 CMD ["rails", "s", "-b", "0.0.0.0", "-p", "3030"]
