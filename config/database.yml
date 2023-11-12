@@ -17,19 +17,26 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  host: database
+  port: 5432
+  prepared_statements: false
+  advisory_locks: false
+  # database: hoomo_rental_db
+  username: hoomo_rental
+  password: 137278
+  
 
 development:
   <<: *default
   database: hoomo_rental_car_development
+  host: database
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: hoomo_rental_car
 
   # The password associated with the postgres role (username).
   #password:
@@ -58,6 +65,7 @@ development:
 test:
   <<: *default
   database: hoomo_rental_car_test
+  host: database
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -84,3 +92,4 @@ production:
   database: hoomo_rental_car_production
   username: hoomo_rental_car
   password: <%= ENV["HOOMO_RENTAL_CAR_DATABASE_PASSWORD"] %>
+  host: database
