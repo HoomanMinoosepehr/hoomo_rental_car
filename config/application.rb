@@ -37,7 +37,7 @@ module HoomoRentalCar
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-          origins '*'
+          origins 'http://client:5050'
           resource '/api/v1/*',
           headers: :any,
           methods: [:get, :post, :patch, :put, :delete],
