@@ -24,7 +24,7 @@ A signed-in user can view the list of cars and access the show page for each car
 Signed-in users can also:
 
  - Add cars to their favorites list.
- - Access their account to view the list of favorited cars.
+ - Access their account to view the list of favored cars.
  - If they have listed any cars for rent, they can manage those listings on their account page.
 
 ## Different parts:
