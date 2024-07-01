@@ -27,7 +27,7 @@ Signed-in users can also:
  - Access their account to view the list of favored cars.
  - If they have listed any cars for rent, they can manage those listings on their account page.
 
-## Different parts:
+## different parts:
 ### User account:
 A new user can make an account and by going into their account, they can edit their account or see their liked cars and also see their own car profiles. They can also delete their account.
 
